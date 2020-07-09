@@ -524,19 +524,18 @@ Write-Host -ForegroundColor Red "Installing Chocolatey failed"
 #https://chocolatey.org/packages
 
 $chocolatePackaging = 
-@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","choco install azure-data-studio")
+@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","azure-data-studio","git")
 
 foreach ($chocolate in $chocolatePackaging) {
 
-Write-Host -ForegroundColor Gray "Attempting to install " $chocolate 
+    Write-Host -ForegroundColor Gray "Attempting to install " $chocolate 
 
-try {
-choco install $chocolate -y
-}
-catch {
-Write-Host -ForegroundColor Red "Installing " $chocolate "failed"
-}
-
+    try {
+        choco install $chocolate -y
+    }
+    catch {
+        Write-Host -ForegroundColor Red "Installing " $chocolate "failed"
+    }
 }
 
 #######################
