@@ -524,7 +524,7 @@ Write-Host -ForegroundColor Red "Installing Chocolatey failed"
 #https://chocolatey.org/packages
 
 $chocolatePackaging = 
-@("vscode","brave","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","choco install azure-data-studio")
+@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","choco install azure-data-studio")
 
 foreach ($chocolate in $chocolatePackaging) {
 
