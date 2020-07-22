@@ -107,7 +107,10 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection
 ###################
 
 #Create a local location to hold all of my development bits
-New-Item -Path "C:\" -Name "workspace" -ItemType Directory
+New-Item -Path "D:\" -Name "workspace" -ItemType Directory
+
+#Set the sounds to No Sounds https://superuser.com/questions/1300539/change-sound-scheme-in-windows-via-windows-registry
+New-ItemProperty -Path HKCU:\AppEvents\Schemes -Name "(Default)" -Value ".None" -Force | Out-Null
 
 #Map network drive to my fileshare
 $Cred = Get-Credential -Message "Please enter your username and password for the FileShare"
@@ -117,6 +120,7 @@ New-PSDrive -Name "F" -PSProvider FileSystem -Root "\\192.168.1.78\FileShare" -P
 Set-DnsClientServerAddress -InterfaceIndex 11 -ServerAddresses ("1.1.1.1") #Lan
 
 #Rename the computer to DevDesk
+Write-Host -ForegroundColor Gray "Renaming computer"
 Rename-Computer -NewName "DevDesk"
 
 #Set desktop background solid black https://www.reddit.com/r/PowerShell/comments/gom9vv/how_to_set_a_desktop_background_to_solid_color/
@@ -496,7 +500,8 @@ $bloatpack =
     "Microsoft.MixedReality.Portal",
     "Microsoft.Microsoft3DViewer",
     "Microsoft.OneConnect",
-    "Microsoft.XboxGamingOverlay"
+    "Microsoft.XboxGamingOverlay",
+    "Microsoft.Getstarted"
 )
 
 foreach ($package in $bloatpack) {
