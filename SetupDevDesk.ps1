@@ -529,7 +529,7 @@ Write-Host -ForegroundColor Red "Installing Chocolatey failed"
 #https://chocolatey.org/packages
 
 $chocolatePackaging = 
-@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","azure-data-studio","git")
+@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","azure-data-studio","git","microsoft-edge","7zip")
 
 foreach ($chocolate in $chocolatePackaging) {
 
@@ -554,6 +554,8 @@ Set-Alias -name startSQL -value .\startSQLServer.ps1 -Description 'Start SQL Ser
 #if(Test-Path Alias:startSQL) {Remove-Item Alias:startSQL}
 Set-Alias -name clearDownloads -value .\deleteOldFiles.ps1 -Description 'Delete old files in the downloads folder' -Force
 #if(Test-Path Alias:clearDownloads) {Remove-Item Alias:clearDownloads}
+Set-Alias -name updateApps -value .\upgradeApplications.ps1 -Description 'Upgrade Installed Applications using Chocolatey' -Force
+#if(Test-Path Alias:updateApps) {Remove-Item Alias:updateApps}
 
 #######################
 ## 
