@@ -543,6 +543,18 @@ foreach ($chocolate in $chocolatePackaging) {
     }
 }
 
+try {
+    git clone https://github.com/BonzaOwl/Scripts.git D:\workspace
+}
+catch {
+   Write-Host -ForegroundColor Red "Unable to clone the git repo" 
+}
+
+Set-Alias -name startSQL -value .\startSQLServer.ps1 -Description 'Start SQL Server' -Force
+#if(Test-Path Alias:startSQL) {Remove-Item Alias:startSQL}
+Set-Alias -name clearDownloads -value .\deleteOldFiles.ps1 -Description 'Delete old files in the downloads folder' -Force
+#if(Test-Path Alias:clearDownloads) {Remove-Item Alias:clearDownloads}
+
 #######################
 ## 
 ## Finish Up
