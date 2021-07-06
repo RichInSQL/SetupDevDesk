@@ -557,6 +557,9 @@ Set-Alias -name clearDownloads -value .\deleteOldFiles.ps1 -Description 'Delete 
 Set-Alias -name updateApps -value .\upgradeApplications.ps1 -Description 'Upgrade Installed Applications using Chocolatey' -Force
 #if(Test-Path Alias:updateApps) {Remove-Item Alias:updateApps}
 
+#Enable Linux sub system
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
 #######################
 ## 
 ## Finish Up
