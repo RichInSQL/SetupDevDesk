@@ -193,7 +193,6 @@ if(!(Test-Path $profile))
     New-Item -path $profile -type file –force
 }
 
-Install-Module dbatools
 Install-Module VSCodeBackup
 
 $profileContent = 'clear-host
@@ -389,15 +388,6 @@ Try {
     Write-Warning -Message "Unable to set power plan to high performance"
 }
 
-cmd /c "powercfg.exe -x -monitor-timeout-ac 0"
-cmd /c "powercfg.exe -x -monitor-timeout-dc 0"
-cmd /c "powercfg.exe -x -disk-timeout-ac 0"
-cmd /c "powercfg.exe -x -disk-timeout-dc 0"
-cmd /c "powercfg.exe -x -standby-timeout-ac 0"
-cmd /c "powercfg.exe -x -standby-timeout-dc 0"
-cmd /c "powercfg.exe -x -hibernate-timeout-ac 0"
-cmd /c "powercfg.exe -x -hibernate-timeout-dc 0"
-
 #Disable Hibernation
 cmd /c "powercfg.exe -hibernate off"
 
@@ -529,7 +519,7 @@ Write-Host -ForegroundColor Red "Installing Chocolatey failed"
 #https://chocolatey.org/packages
 
 $chocolatePackaging = 
-@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","azure-data-studio","git","slack","microsoft-edge","7zip","teracopy")
+@("vscode","firefox","1password","sql-server-management-studio","github-desktop","paint.net","microsoft-windows-terminal","azure-data-studio","git","slack","office-tool","sqlsearch","sql-server-2017","microsoft-edge","7zip","teracopy","notepadplusplus","treesizefree")
 
 foreach ($chocolate in $chocolatePackaging) {
 
@@ -559,6 +549,9 @@ Set-Alias -name updateApps -value .\upgradeApplications.ps1 -Description 'Upgrad
 
 #Enable Linux sub system
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+#Install DBA Tools
+Install-Module dbatools -Scope CurrentUser -y
 
 #######################
 ## 
